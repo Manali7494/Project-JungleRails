@@ -3,23 +3,50 @@
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
   </header>
-
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order! A confirmation email has been sent to the following address
-    email address :<%= @order.email %></h4>
-    TotalCost = $<%=@line_items.sum('total_price_cents') /100 %>
-    <% @line_items.each do |element| %>
-
-    <table style="width:100%">
-      <h6> NAME: <%= element.product.name %> </h6>
-      <h6> LINE ITEM ITEM PRICE: $ <%= element.total_price_cents / 100%> </h6>
-      <h6> QUANITY PURCHASED: <%= element.quantity %> </h6>
-      <h6> DESCRIPTION: <%= element.product.description %> </h6>
-      <h6> TOTAL PURCHASE  </h6>
-      <img src= <%=element.product.image %> > 
-     <% end %>
-  </div>
-
+    <h4>Thank you for your order! </h4>
+    <h5> A confirmation email has been sent to the following address
+    email address: <%= @order.email %></h5>
+    <div class="panel panel-default items">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2"> Product</th>
+          <th>Quantity</th>          
+          <th> Unit Price </th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @line_items.each do |element| %>
+        <tr>
+        <td>
+          <%= image_tag element.product.image.tiny %>
+        </td>
+        <td>
+          <h4> <%= element.product.name %></h4>
+          <h6><%= element.product.description %></h6>
+        </td>
+        <td>
+          <%= element.quantity %>           
+        </td>
+        <td>
+          <%= element.total_price_cents / 100.00%>
+        </td>
+      </tr>       
+       <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="3">
+            TOTAL:
+          </th>
+          <th>
+            $<%= @line_items.sum('total_price_cents') /100.00 %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+    </div>
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
