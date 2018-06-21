@@ -5,7 +5,19 @@
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <h4>Thank you for your order! A confirmation email has been sent to the following address
+    email address :<%= @order.email %></h4>
+    TotalCost = $<%=@line_items.sum('total_price_cents') /100 %>
+    <% @line_items.each do |element| %>
+
+    <table style="width:100%">
+      <h6> NAME: <%= element.product.name %> </h6>
+      <h6> LINE ITEM ITEM PRICE: $ <%= element.total_price_cents / 100%> </h6>
+      <h6> QUANITY PURCHASED: <%= element.quantity %> </h6>
+      <h6> DESCRIPTION: <%= element.product.description %> </h6>
+      <h6> TOTAL PURCHASE  </h6>
+      <img src= <%=element.product.image %> > 
+     <% end %>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
