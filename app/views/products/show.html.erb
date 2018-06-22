@@ -23,12 +23,17 @@
       <!-- SECOND ROW! -->
       <div class="row">
          <div class="col-sm-12">
-            <% @reviews.each do |item| %>
             <div>
-               <h3> Rating: <%= item.rating%> stars </h3>
-               <h5> Review: <%=item.description %> </h5>
-            </div>
+            <% @reviews.each do |item| %>
+            <% @users.each do |user| %>
+                  <% if user.id == item.user_id %>
+                  <h3> Username: <%= user.name %> </h3>
+                  <h4> Rating: <%= item.rating%> stars </h4>
+                  <h5> Review: <%=item.description %> </h5>
+                  <% end %>
             <% end %>
+            </div>
+            <% end%>
          </div>
    </article>
    </div>
