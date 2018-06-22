@@ -128,9 +128,30 @@ cat3.products.create!({
   name:  'Red Bookshelf',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture3.jpg'),
-  quantity: 0,
+  quantity:10,
   price: 2_483.75
 })
 
 
+# Add product Reviews
+
+product1 = Product.find_by(id: 1)
+
+product1.product_reviews.create({
+  user_id: 1,
+  description: 'Amazing Product. Really enjoyed it',
+  rating: 5
+})
+
+product1.product_reviews.create({
+  user_id: 2,
+  description: 'Hated it!',
+  rating: 1
+})
+
+product1.product_reviews.create({
+  user_id: 3,
+  description: 'It was alright, could be better',
+  rating: 3
+})
 puts "DONE!"
