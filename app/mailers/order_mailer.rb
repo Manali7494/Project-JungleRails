@@ -5,8 +5,8 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.order_confirmation.subject
   #
-  def order_confirmation
-    @text = 'hello'
-    mail to: "manalib2010@gmail.com"
+  def order_confirmation(order)
+    @order = order
+    mail(to: "manalib2010@gmail.com", subject: "Thank you for your order from JungleRails")
   end
 end
