@@ -3,7 +3,22 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
+  <% if cart.blank? == true%>
 
+<div class="panel panel-default emptyCart">  
+     <div class="well">
+  <h4> Your cart is empty! <br>
+  Here is a link to help you out!
+  </h4>
+ 
+
+  </div>
+       <btn class = 'btn btn-warning'>
+    <%= link_to 'Show Products', :controller => 'products'%>
+  </btn>
+</div>
+
+  <% else %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -49,5 +64,6 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 
 </section>
