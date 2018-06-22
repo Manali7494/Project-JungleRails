@@ -1,5 +1,7 @@
 class Admin::DashboardController < ApplicationController
-  # http_basic_authenticate_with username: ENV[admin_username], password: ENV[admin_password]
+  ad_name = ENV['admin_username']
+  ad_password = ENV['admin_password']
+  http_basic_authenticate_with name: ad_name , password: ad_password
 
   def show
     
