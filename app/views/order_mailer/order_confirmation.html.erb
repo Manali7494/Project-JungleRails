@@ -1,4 +1,5 @@
-<h1> Thank you for your purchase </h1>
+<h1> Order #: <%= @order.id %> <h1> 
+<h2> Thank you for your purchase. </h2>
 
     <h3> The following email was used to purchase the items: <%= @order.email %></h3>
     <div class="panel panel-default items">
@@ -17,7 +18,7 @@
     </td>
     <td>
         <h3> <%= element.product.name %></h3>
-        <h4><%= element.product.description %></h4>
+        <p><%= element.product.description %></p>
     </td>
     <td>
         <%= element.quantity %>           
