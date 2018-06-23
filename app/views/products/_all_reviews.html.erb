@@ -1,0 +1,20 @@
+            <h3> Reviews </h3>
+            <% @reviews.each do |review| %>
+            <% @users.each do |user| %>
+                  <% if user.id == review.user_id %>                 
+                  <div class = "panel panel-primary">
+                  <div class = "panel-heading"> <%= user.name%> 
+                  <% if current_user.id == review.user_id %> 
+                    <%= link_to fa_icon('trash'), product_review_path(@product, review) , class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+                  <% end %>
+                  </div>
+                  <div class = "panel-body">                   
+                   <%= review.description %>
+                  </div>
+                  <div class = "panel-footer">
+                  <%= review.rating %> star(s)
+                  </div>
+                  </div>
+                  <% end %>
+            <% end %>
+            <% end%>

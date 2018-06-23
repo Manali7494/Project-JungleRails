@@ -6,10 +6,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    
     @product = Product.find params[:id]
-    product_id = @product.id
-    @users = User.all    
-    @reviews = Review.where("product_id = #{product_id}")
+    @users = User.all
+    @reviews = Review.where("product_id = #{@product.id}").order(id: :desc)
+    # @review = Review.find_by(id: @review_indv)
   end
 end

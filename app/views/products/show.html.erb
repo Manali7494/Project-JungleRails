@@ -22,27 +22,11 @@
       </div>
       <!-- SECOND ROW! -->
       <div class = 'row'>
-      <%= render 'review' %>
+      <%= render 'review_form' %>
       </div>
       <div class="row">
          <div class="col-sm-12">
-            <h3> Reviews </h3>
-            <% @reviews.each do |item| %>
-            <% @users.each do |user| %>
-                  <% if user.id == item.user_id %>                 
-                  <div class = "panel panel-primary">
-                  <div class = "panel-heading"> <%= user.name%> </div>
-                  <div class = "panel-body">                   
-                   <%= item.description %>
-                  </div>
-                  <div class = "panel-footer">
-                  <%= item.rating %> star(s)
-                  </div>
-                  </div>
-                  <% end %>
-            <% end %>
-
-            <% end%>
+            <%= render 'all_reviews'%>
          </div>
    </article>
    </div>
