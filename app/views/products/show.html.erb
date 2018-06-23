@@ -21,12 +21,14 @@
          </div>
       </div>
       <!-- SECOND ROW! -->
+      <div class = 'row'>
+      <%= render 'review' %>
+      </div>
       <div class="row">
          <div class="col-sm-12">
             <h3> Reviews </h3>
             <% @reviews.each do |item| %>
             <% @users.each do |user| %>
- 
                   <% if user.id == item.user_id %>                 
                   <div class = "panel panel-primary">
                   <div class = "panel-heading"> <%= user.name%> </div>

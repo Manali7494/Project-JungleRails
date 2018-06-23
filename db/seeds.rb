@@ -132,24 +132,21 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+product1 = Product.find_by(name: 'Men\'s Classy shirt')
 
-# Add product Reviews
-
-product1 = Product.find_by(id: 1)
-
-product1.product_reviews.create({
+product1.reviews.create({
   user_id: 1,
   description: 'Amazing Product. Really enjoyed it',
   rating: 5
 })
 
-product1.product_reviews.create({
+product1.reviews.create({
   user_id: 2,
   description: 'Hated it!',
   rating: 1
 })
 
-product1.product_reviews.create({
+product1.reviews.create({
   user_id: 3,
   description: 'It was alright, could be better',
   rating: 3

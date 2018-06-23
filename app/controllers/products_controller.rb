@@ -9,8 +9,7 @@ class ProductsController < ApplicationController
     
     @product = Product.find params[:id]
     product_id = @product.id
-    @users = User.all
-    @reviews = ProductReview.where("product_id = #{product_id}")
-    
+    @users = User.all    
+    @reviews = Review.where("product_id = #{product_id}")
   end
 end
