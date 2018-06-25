@@ -34,11 +34,22 @@ RSpec.describe User, type: :model do
     end
 
     describe '.authenticate_with_credentials' do
-    it 'return nil if without correct password' do
-      user1 = User.create(name: 'Kelly', email: 'kelly@gmail.com', password: 'kelly123', password_confirmation: 'kelly123')
+    it 'is not nil with correct email and password' do
+      user1 = User.create(name: 'James', email: 'james@gmail.com', password: 'james123', password_confirmation: 'james123')
       user1_login = User.authenticate_with_credentials(user1.email, user1.password)
-      expect(user1_login).to_not be_valid
-      end
+      expect(user1_login).to_not be_nil
+    end
+    it 'return nil without correct password' do
+      user1 = User.create(name: 'James', email: 'james@gmail.com', password: 'james123', password_confirmation: 'kelly123')
+      user1_login = User.authenticate_with_credentials(user1.email, 'james123')
+      expect(user1_login).to be_nil
+    end
+
+    it 'return nil with a different user' do
+      user1 = User.create(name: 'Alice', email: 'alice@gmail.com', password: 'alice123', password_confirmation: 'alice123')
+      user1_login = User.authenticate_with_credentials('james@gmail.com', 'james123')
+      expect(user1_login).to be_nil
+    end
 
   end
 end

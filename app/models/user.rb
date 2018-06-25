@@ -13,10 +13,6 @@ class User < ActiveRecord::Base
     new_email = email.downcase
     user = User.find_by_email(new_email)
     # If the user exists AND the password entered is correct.
-    if user && user&.authenticate(password)
-        user
-    else
-        nil
-    end
+    user if user&.authenticate(password)
   end
 end
