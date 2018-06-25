@@ -29,8 +29,13 @@ RSpec.describe User, type: :model do
     end
 
     it ' is not valid without an unique email' do
-      User.create(name: 'james1', email: 'JAMES@gmail.com', password: 'james1', password_confirmation: 'james1') 
+      User.create(name: 'james1', email: 'JAMES@GMAIL.COM', password: 'james1', password_confirmation: 'james1') 
       user1 = User.new(name: 'james2', email: 'james@gmail.com', password: 'james2', password_confirmation: 'james2')
+      expect(user1).to_not be_valid
+    end
+
+    it 'is not valid with a short password (< 6 characters)' do
+      user1 = User.new(name: 'James', email: 'james@gmail.com', password: 'james', password_confirmation: 'james')
       expect(user1).to_not be_valid
     end
 
