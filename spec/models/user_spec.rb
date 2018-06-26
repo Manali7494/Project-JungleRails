@@ -51,5 +51,18 @@ RSpec.describe User, type: :model do
       expect(user1_login).to be_nil
     end
 
+    it 'works even if the email is different case' do
+      user1 = User.create(name: 'James', email: 'james@gmail.com', password: 'james123', password_confirmation: 'james123')
+      user1_login = User.authenticate_with_credentials('JAMES@GMAil.COM', 'james123')
+      expect(user1_login).to_not be_nil
+    end
+
+    it 'works even if there is extra space in email' do
+      user1 = User.create(name: 'James', email: 'james@gmail.com', password: 'james123', password_confirmation: 'james123')
+      user1_login = User.authenticate_with_credentials('  JAMES@GMAil.COM  ', 'james123')
+      expect(user1_login).to_not be_nil
+    end
+
+
   end
 end
