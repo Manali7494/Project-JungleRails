@@ -7,6 +7,7 @@ class OrderMailer < ApplicationMailer
   #
   def order_confirmation(current_user, order)
     @order = order
-    mail(to: current_user.email, subject: "Order # #{order.id}. Thank you #{current_user.name} for your order from JungleRails")
+    @curUser = current_user
+    mail(to: current_user.email, subject: "Order # #{order.id}. Thank you for your order from JungleRails")
   end
 end

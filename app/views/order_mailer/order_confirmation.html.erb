@@ -1,7 +1,7 @@
 <h1> Order #: <%= @order.id %> <h1> 
-<h2> Thank you for your purchase. </h2>
+<h2> Thank you for your purchase, <%= @curUser.name %>. </h2>
 
-    <h3> The following email was used to purchase the items: <%= @order.email %></h3>
+    <h3> The following email was used to purchase the items: <%= @curUser.email %></h3>
     <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
